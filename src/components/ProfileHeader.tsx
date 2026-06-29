@@ -25,7 +25,7 @@ export default function ProfileHeader() {
     <header className="flex flex-col items-center text-center w-full group">
 
       {/* Avatar interactivo con flotación */}
-      <div className="relative w-36 h-36 mb-6 mt-2 transition-transform duration-500 group-hover:scale-105 animate-float">
+      <div className="relative w-48 h-48 sm:w-52 sm:h-52 mb-6 mt-2 transition-transform duration-500 group-hover:scale-105 animate-float">
 
         {/* Aura exterior vibrante que respira con el hover (Rojo y Dorado) */}
         <div className="absolute inset-0 bg-gradient-to-tr from-red-600 via-amber-500 to-red-700 rounded-full blur-[25px] opacity-40 group-hover:opacity-80 group-hover:blur-[35px] transition-all duration-700 ease-out"></div>
@@ -44,7 +44,7 @@ export default function ProfileHeader() {
             alt="Taxi Manrrique - Perfil"
             fill
             priority
-            sizes="(max-width: 768px) 144px, 144px"
+            sizes="(max-width: 768px) 208px, 208px"
             className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
         </div>

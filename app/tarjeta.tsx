@@ -84,11 +84,11 @@ export default function Tarjeta({ onClose }: TarjetaProps) {
       {lado === 'front' ? (
         <>
           <div className="flex items-center gap-3 relative z-10">
-            <div className="relative w-16 h-16 rounded-full p-0.5 bg-gradient-to-br from-red-500 to-red-600 flex-shrink-0 shadow-[0_0_15px_rgba(220,38,38,0.3)]">
+            <div className="relative w-20 h-20 rounded-full p-0.5 bg-gradient-to-br from-red-500 to-red-600 flex-shrink-0 shadow-[0_0_15px_rgba(220,38,38,0.3)]">
               <div className="relative w-full h-full rounded-full overflow-hidden border border-red-500/40 bg-black">
                 <Image src="/foto_perfil.jpeg" alt="Taxi Manrrique" fill className="object-cover" unoptimized priority />
               </div>
-              <VerifiedIcon className="absolute -bottom-0.5 -right-0.5 text-red-400 text-lg bg-black rounded-full" />
+              <VerifiedIcon className="absolute -bottom-0.5 -right-0.5 text-red-400 text-xl bg-black rounded-full" />
             </div>
 
             <div className="flex flex-col">
