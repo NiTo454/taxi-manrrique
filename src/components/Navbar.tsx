@@ -9,8 +9,9 @@ interface NavbarProps {
 
 export default function Navbar({ onShowTarjeta, onHome }: NavbarProps) {
   const brandParts = TAXI_INFO.brandName.split(' ');
-  const brandFirst = brandParts[0].toUpperCase();
-  const brandRest = brandParts.slice(1).join(' ').toUpperCase();
+  const hasUnitNumber = brandParts.length > 2 && !isNaN(Number(brandParts[1]));
+  const brandFirst = (hasUnitNumber ? brandParts.slice(0, 2).join(' ') : brandParts[0]).toUpperCase();
+  const brandRest = (hasUnitNumber ? brandParts.slice(2).join(' ') : brandParts.slice(1).join(' ')).toUpperCase();
 
   return (
     <nav className="w-full fixed top-0 z-50 bg-[#050505]/60 backdrop-blur-2xl border-b border-white/5 shadow-[0_10px_30px_rgba(0,0,0,0.8)] transition-all">

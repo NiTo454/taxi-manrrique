@@ -48,9 +48,17 @@ export default function SplashScreen({ isFadingOut }: SplashScreenProps) {
         </div>
 
         {/* Logo */}
-        <h2 className="mt-6 text-white text-3xl font-black tracking-[0.25em] uppercase flex items-center gap-3 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-          {TAXI_INFO.brandName.split(' ')[0]} <span className="text-transparent bg-clip-text bg-gradient-to-r from-wine-300 via-wine-500 to-wine-600 animate-pulse">{TAXI_INFO.brandName.split(' ').slice(1).join(' ')}</span>
-        </h2>
+        {(() => {
+          const brandParts = TAXI_INFO.brandName.split(' ');
+          const hasUnitNumber = brandParts.length > 2 && !isNaN(Number(brandParts[1]));
+          const brandFirst = hasUnitNumber ? brandParts.slice(0, 2).join(' ') : brandParts[0];
+          const brandRest = hasUnitNumber ? brandParts.slice(2).join(' ') : brandParts.slice(1).join(' ');
+          return (
+            <h2 className="mt-6 text-white text-3xl font-black tracking-[0.25em] uppercase flex items-center gap-3 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+              {brandFirst} <span className="text-transparent bg-clip-text bg-gradient-to-r from-wine-300 via-wine-500 to-wine-600 animate-pulse">{brandRest}</span>
+            </h2>
+          );
+        })()}
 
         {/* Indicador de carga */}
         <div className="mt-8 px-6 py-2.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.25)]">

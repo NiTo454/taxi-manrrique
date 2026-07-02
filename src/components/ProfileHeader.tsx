@@ -27,8 +27,9 @@ export default function ProfileHeader() {
   };
 
   const brandParts = TAXI_INFO.brandName.split(' ');
-  const brandFirst = brandParts[0];
-  const brandRest = brandParts.slice(1).join(' ');
+  const hasUnitNumber = brandParts.length > 2 && !isNaN(Number(brandParts[1]));
+  const brandFirst = hasUnitNumber ? brandParts.slice(0, 2).join(' ') : brandParts[0];
+  const brandRest = hasUnitNumber ? brandParts.slice(2).join(' ') : brandParts.slice(1).join(' ');
 
   return (
     <header className="flex flex-col items-center text-center w-full group">

@@ -128,8 +128,9 @@ export default function Tarjeta({ onClose }: TarjetaProps) {
 
   const ContenidoTarjeta = ({ lado }: { lado: 'front' | 'back' }) => {
     const brandParts = TAXI_INFO.brandName.split(' ');
-    const brandFirst = brandParts[0].toUpperCase();
-    const brandRest = brandParts.slice(1).join(' ').toUpperCase();
+    const hasUnitNumber = brandParts.length > 2 && !isNaN(Number(brandParts[1]));
+    const brandFirst = (hasUnitNumber ? brandParts.slice(0, 2).join(' ') : brandParts[0]).toUpperCase();
+    const brandRest = (hasUnitNumber ? brandParts.slice(2).join(' ') : brandParts.slice(1).join(' ')).toUpperCase();
 
     return (
       <div className="w-[340px] h-[220px] bg-gradient-to-br from-[#1a1a1a] via-[#121212] to-[#0a0a0a] border border-wine-500/30 rounded-xl overflow-hidden flex flex-col justify-between p-5 relative shadow-2xl select-none text-left">
@@ -161,8 +162,8 @@ export default function Tarjeta({ onClose }: TarjetaProps) {
                 <VerifiedIcon className="absolute -bottom-0.5 -right-0.5 text-wine-300 text-lg bg-black rounded-full" />
               </div>
 
-              <div className="flex flex-col">
-                <h1 className="text-lg font-black text-white tracking-[0.15em] leading-none uppercase">
+              <div className="flex flex-col max-w-[200px]">
+                <h1 className="text-[15px] min-[375px]:text-base font-black text-white tracking-[0.08em] leading-none uppercase">
                   {brandFirst} <span className="text-wine-400 drop-shadow-[0_0_8px_rgba(158,28,59,0.5)]">{brandRest}</span>
                 </h1>
                 <p className="text-wine-200/80 text-[8px] font-black uppercase tracking-[0.25em] mt-1.5 flex items-center gap-1.5">

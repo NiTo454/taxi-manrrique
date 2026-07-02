@@ -1,6 +1,6 @@
 export const TAXI_INFO = {
   driverName: "Manrrique Rodriguez",
-  brandName: "Taxi Manrrique",
+  brandName: "Taxi 378 Manrrique",
   tagline: "Transporte Seguro",
   coverage: "Tizayuca",
   websiteUrl: "https://taxi-manrrique.vercel.app/",
