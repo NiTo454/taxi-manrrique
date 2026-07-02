@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { TAXI_INFO } from '../config/info';
 
 export default function PaymentMethods() {
   const [copiado, setCopiado] = useState<string>('');
@@ -49,7 +50,7 @@ export default function PaymentMethods() {
       </h2>
 
       {/* Contenedor de la Tarjeta (Réplica Exacta BanCoppel) */}
-      <div className="relative w-full max-w-[360px] aspect-[1.59/1] rounded-[20px] bg-gradient-to-br from-[#ffdc00] via-[#ffe338] to-[#f5cc00] p-5 sm:p-6 flex flex-col justify-between overflow-hidden group transition-all duration-500 hover:-translate-y-2 shadow-[0_10px_30px_rgba(255,214,0,0.3)] hover:shadow-[0_15px_40px_rgba(220,38,38,0.4)] border border-yellow-300 select-none">
+      <div className="relative w-full max-w-[360px] aspect-[1.59/1] rounded-[20px] bg-gradient-to-br from-[#ffdc00] via-[#ffe338] to-[#f5cc00] p-5 sm:p-6 flex flex-col justify-between overflow-hidden group transition-all duration-500 hover:-translate-y-2 shadow-[0_10px_30px_rgba(255,214,0,0.3)] hover:shadow-[0_15px_40px_rgba(158,28,59,0.4)] border border-yellow-300 select-none">
 
         {/* Resplandor radial claro en el centro */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-white/40 rounded-full blur-[40px] pointer-events-none"></div>
@@ -79,14 +80,11 @@ export default function PaymentMethods() {
           {/* Icono de la Llave BanCoppel */}
           <div className="flex items-center justify-center text-[#004ea8] drop-shadow-sm ml-6">
             <svg width="60" height="30" viewBox="0 0 60 30" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              {/* Cabeza de la llave (3 círculos) */}
               <circle cx="10" cy="15" r="7" fill="none" stroke="currentColor" strokeWidth="3" />
               <circle cx="10" cy="9" r="3" fill="none" stroke="currentColor" strokeWidth="2.5" />
               <circle cx="10" cy="21" r="3" fill="none" stroke="currentColor" strokeWidth="2.5" />
               <circle cx="10" cy="15" r="2.5" fill="currentColor" />
-              {/* Cuerpo de la llave */}
               <rect x="17" y="13.5" width="28" height="3" fill="currentColor" rx="1" />
-              {/* Dientes de la llave */}
               <rect x="36" y="16.5" width="3" height="5" fill="currentColor" />
               <rect x="41" y="16.5" width="4" height="7" fill="currentColor" />
             </svg>
@@ -108,16 +106,14 @@ export default function PaymentMethods() {
         <div className="relative z-10 flex flex-col gap-1.5 mt-auto">
           <div className="flex justify-between items-end">
             <div className="flex flex-col">
-              {/* Número de Tarjeta destacado en azul marino para legibilidad impecable */}
               <p className="font-mono text-[16px] min-[375px]:text-[17px] sm:text-[18px] tracking-[0.12em] text-[#002d6b] font-black drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
-                4169 1614 3056 3311
+                {TAXI_INFO.bank.clabe}
               </p>
               <span className="text-[11px] font-black uppercase tracking-widest text-[#003c8a] mt-0.5 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
-                Manrrique Rodriguez
+                {TAXI_INFO.driverName}
               </span>
             </div>
 
-            {/* Logo VISA Plata / Blanco como en la imagen */}
             <div className="text-right pb-0.5">
               <span className="text-2xl font-extrabold italic text-white tracking-tighter drop-shadow-[0_2px_3px_rgba(0,0,0,0.3)] font-serif">
                 VISA
@@ -129,12 +125,12 @@ export default function PaymentMethods() {
 
       {/* Botón de Copiar Externo */}
       <button
-        onClick={() => copiarDatos('4169161430563311', 'coppel')}
+        onClick={() => copiarDatos(TAXI_INFO.bank.clabeRaw, 'coppel')}
         aria-live="polite"
         className={`mt-8 w-full max-w-[360px] py-3.5 px-4 flex items-center justify-center gap-3 rounded-xl transition-all duration-300 text-sm font-semibold active:scale-95 shadow-lg backdrop-blur-sm ${
           copiado === 'coppel'
             ? 'bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.3)]'
-            : 'bg-red-600/15 border border-red-500/40 text-red-100 hover:bg-red-600/25 hover:border-red-500/70 shadow-[0_0_15px_rgba(220,38,38,0.15)] hover:shadow-[0_0_20px_rgba(220,38,38,0.3)]'
+            : 'bg-wine-600/15 border border-wine-500/40 text-wine-100 hover:bg-wine-600/25 hover:border-wine-500/70 shadow-[0_0_15px_rgba(158,28,59,0.15)] hover:shadow-[0_0_20px_rgba(158,28,59,0.3)]'
         }`}
       >
         {copiado === 'coppel' ? (

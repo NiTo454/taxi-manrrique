@@ -1,7 +1,19 @@
+'use client';
+import { useState, useEffect } from 'react';
+import { TAXI_INFO } from '../config/info';
+
 export default function WhatsAppButton() {
-  // Número de WhatsApp con el código de país (52 para México)
-  const numeroWhatsApp = "525632543475";
-  const mensaje = "Hola Manrrique, me gustaría solicitar un viaje por favor.";
+  const numeroWhatsApp = TAXI_INFO.phone.raw;
+  const [mensaje, setMensaje] = useState(TAXI_INFO.whatsapp.message);
+
+  useEffect(() => {
+    const hora = new Date().getHours();
+    let saludo = 'buenas noches';
+    if (hora >= 6 && hora < 12) saludo = 'buenos días';
+    else if (hora >= 12 && hora < 19) saludo = 'buenas tardes';
+    
+    setMensaje(`Hola Manrrique, ${saludo}. Me gustaría solicitar un viaje por favor.`);
+  }, []);
 
   return (
     <div className="w-full">
@@ -9,7 +21,7 @@ export default function WhatsAppButton() {
         href={`https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex items-center justify-center w-full bg-gradient-to-r from-red-600 to-red-600 hover:from-red-500 hover:to-red-500 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(220,38,38,0.4)] hover:shadow-[0_0_25px_rgba(220,38,38,0.7)] hover:scale-105 overflow-hidden"
+        className="group relative flex items-center justify-center w-full bg-gradient-to-r from-wine-600 to-wine-400 hover:from-wine-500 hover:to-wine-300 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(158,28,59,0.4)] hover:shadow-[0_0_25px_rgba(158,28,59,0.7)] hover:scale-105 overflow-hidden"
       >
         {/* Efecto de brillo interno */}
         <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out"></div>

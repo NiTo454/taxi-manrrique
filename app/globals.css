@@ -1,8 +1,20 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: var(--font-outfit), system-ui, sans-serif;
+  --color-wine-300: #ff0e0e;
+  --color-wine-400: #c40909;
+  --color-wine-500: #920000;
+  --color-wine-600: #650000;
+  --color-wine-700: #3c0000;
+  --color-wine-800: #240000;
+  --color-wine-900: #120000;
+
   --animate-slide-up: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-float: float 4s ease-in-out infinite;
+  --animate-spin-slow: spin 4s linear infinite;
+  --animate-spin-fast: spin 1.5s linear infinite;
+  --animate-text-gradient: textGradient 4s linear infinite;
 
   @keyframes slide-up {
     0% { opacity: 0; transform: translateY(30px); }
@@ -11,8 +23,19 @@
 
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-8px); }
   }
+
+  @keyframes textGradient {
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
+  }
+}
+
+/* Clases de utilidad personalizadas adicionales */
+.animate-text-gradient {
+  background-size: 200% auto;
 }
 
 :root {

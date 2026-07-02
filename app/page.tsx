@@ -45,58 +45,56 @@ export default function Home() {
 
   return (
     <>
-      {/* Pantalla de carga superpuesta automatizada.
-          El atributo 'key' obliga a React a reiniciar la animación cada vez que la vista cambia. */}
+      {/* Pantalla de carga superpuesta automatizada. */}
       <PageLoader key={mostrarTarjeta ? 'tarjeta' : 'inicio'} />
 
       {/* Contenido principal de la página. */}
-      <main className="min-h-screen bg-black text-white selection:bg-red-500/30 selection:text-red-200 flex flex-col">
-      <Navbar
-        onShowTarjeta={openTarjeta}
-        onHome={closeTarjeta}
-      />
+      <main className="min-h-screen bg-black text-white selection:bg-wine-500/30 selection:text-wine-200 flex flex-col">
+        <Navbar
+          onShowTarjeta={openTarjeta}
+          onHome={closeTarjeta}
+        />
 
-      {/* Contenedor centralizado para la tarjeta */}
-      <div className="flex-grow flex flex-col items-center justify-center py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Contenedor centralizado para la tarjeta */}
+        <div className="flex-grow flex flex-col items-center justify-center py-20 px-4 sm:px-6 lg:px-8 relative overflow-x-hidden">
 
-        {/* Brillo de fondo centralizado (se muestra cuando está la tarjeta) */}
-        {mostrarTarjeta && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[600px] max-h-[600px] bg-red-600/20 blur-[120px] rounded-full pointer-events-none"></div>
-        )}
+          {/* Brillo de fondo centralizado (se muestra cuando está la tarjeta) */}
+          {mostrarTarjeta && (
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[600px] max-h-[600px] bg-wine-600/20 blur-[120px] rounded-full pointer-events-none"></div>
+          )}
 
-        {!mostrarTarjeta ? (
-          <div className="w-full max-w-md relative animate-slide-up">
-            {/* Aura / Resplandor de fondo */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-red-600 rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+          {!mostrarTarjeta ? (
+            <div className="w-full max-w-md relative animate-slide-up">
+              {/* Aura / Resplandor de fondo color vino */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-wine-600 to-wine-800 rounded-[2rem] blur opacity-25 group-hover:opacity-45 transition duration-1000"></div>
 
-            {/* Tarjeta Principal (Glassmorphism) */}
-            <div className="relative bg-[#0a0a0a]/80 backdrop-blur-xl border border-red-500/20 rounded-[2rem] p-8 shadow-2xl flex flex-col items-center">
+              {/* Tarjeta Principal (Glassmorphism) */}
+              <div className="relative bg-[#0a0a0a]/80 backdrop-blur-xl border border-wine-500/20 rounded-[2rem] p-8 shadow-2xl flex flex-col items-center">
 
-              <ProfileHeader />
+                <ProfileHeader />
 
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-red-500/30 to-transparent my-8"></div>
+                <div className="w-full h-px bg-gradient-to-r from-transparent via-wine-500/30 to-transparent my-8"></div>
 
-              <div className="flex flex-col gap-4 w-full">
-                <WhatsAppButton />
-                <CallButton />
+                <div className="flex flex-col gap-4 w-full">
+                  <WhatsAppButton />
+                  <CallButton />
+                </div>
+
+                <div className="mt-10 w-full">
+                  <PaymentMethods />
+                </div>
+
               </div>
-
-              <div className="mt-10 w-full">
-                <PaymentMethods />
-              </div>
-
             </div>
-          </div>
-        ) : (
-          <div className="w-full max-w-sm relative animate-slide-up z-10">
-            {/* La tarjeta usa la función closeTarjeta para manejar correctamente el historial */}
-            <Tarjeta onClose={closeTarjeta} />
-          </div>
-        )}
-      </div>
+          ) : (
+            <div className="w-full max-w-sm relative animate-slide-up z-10">
+              <Tarjeta onClose={closeTarjeta} />
+            </div>
+          )}
+        </div>
 
-      <Footer />
-    </main>
+        <Footer />
+      </main>
     </>
   );
 }
