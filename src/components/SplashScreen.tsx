@@ -54,8 +54,11 @@ export default function SplashScreen({ isFadingOut }: SplashScreenProps) {
           const brandFirst = hasUnitNumber ? brandParts.slice(0, 2).join(' ') : brandParts[0];
           const brandRest = hasUnitNumber ? brandParts.slice(2).join(' ') : brandParts.slice(1).join(' ');
           return (
-            <h2 className="mt-6 text-white text-3xl font-black tracking-[0.25em] uppercase flex items-center gap-3 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-              {brandFirst} <span className="text-transparent bg-clip-text bg-gradient-to-r from-wine-300 via-wine-500 to-wine-600 animate-pulse">{brandRest}</span>
+            <h2 className="mt-6 text-center text-2xl sm:text-3xl font-black tracking-[0.12em] sm:tracking-[0.25em] uppercase drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] px-4">
+              {brandFirst}{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-wine-300 via-wine-500 to-wine-600 animate-pulse block sm:inline mt-1 sm:mt-0">
+                {brandRest}
+              </span>
             </h2>
           );
         })()}
